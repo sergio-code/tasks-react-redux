@@ -19,3 +19,8 @@ Functionality:
 
 `npm run build # Builds for production`
 
+## Credits
+- [Pagination in ReactJs by Agoi Abel](https://medium.com/@agoiabeladeyemi/pagination-in-reactjs-36f4a6a6eb43)
+
+## License
+MIT © Sergio Gromov
