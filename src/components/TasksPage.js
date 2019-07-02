@@ -15,7 +15,7 @@ const TasksPage = ({ total, itemsPerPage, currentPage, onPageSelect }) => {
 					</div>
 					<TaskList />
 					<Pagination
-						{...{ total, itemsPerPage, currentPage, onPageSelect }}
+						{...{ total, itemsPerPage, currentPage, onPageSelect, length: 7 }}
 					/>
 				</div>
 			</section>

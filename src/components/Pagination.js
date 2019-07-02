@@ -44,11 +44,12 @@ const generateButtonsSequence = ({
 	return buttons.sort((a, b) => a - b)
 }
 
-const Pagination = ({ onPageSelect, total, itemsPerPage, currentPage }) => {
+const Pagination = ({ onPageSelect, total, itemsPerPage, currentPage, length = 7 }) => {
 	const numbers = generateButtonsSequence({
 		total,
 		itemsPerPage,
-		currentPage
+		currentPage,
+		length
 	})
 	const lastPageNum = Math.ceil(total / itemsPerPage)
 	return (
