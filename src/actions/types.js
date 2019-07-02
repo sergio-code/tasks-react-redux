@@ -1,0 +1,29 @@
+export const SIGN_IN = 'SIGN_IN'
+export const SIGN_OUT = 'SIGN_OUT'
+
+export const FETCH_TASKS = 'FETCH_TASKS'
+export const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS'
+export const FETCH_TASKS_FAILURE = 'FETCH_TASKS_FAILURE'
+// export const TASKS_RESET = 'TASKS_RESET'
+
+// export const FETCH_TASK = 'FETCH_TASK'
+
+export const CREATE_TASK = 'CREATE_TASK'
+export const CREATE_TASK_SUCCESS = 'CREATE_TASK_SUCCESS'
+export const CREATE_TASK_FAILURE = 'CREATE_TASK_FAILURE'
+
+export const EDIT_TASK = 'EDIT_TASK'
+export const EDIT_TASK_SUCCESS = 'EDIT_TASK_SUCCESS'
+export const EDIT_TASK_FAILURE = 'EDIT_TASK_FAILURE'
+
+export const SET_TASKS_PER_PAGE = 'SET_TASKS_PER_PAGE'
+export const SET_PAGE = 'SET_PAGE'
+export const SET_SORTING = 'SET_SORTING'
+
+export const ADD_ERROR = 'ADD_ERROR'
+export const REMOVE_ERROR = 'REMOVE_ERROR'
+
+export const SHOW_TASK_FORM = 'SHOW_TASK_FORM'
+export const CLOSE_TASK_FORM = 'CLOSE_TASK_FORM'
+
+export const SET_CURRENT_TASK = 'SET_CURRENT_TASK'
