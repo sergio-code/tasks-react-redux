@@ -1,0 +1,152 @@
+$green: #4caf50;
+$light-grey: #dbdbdb;
+$grey: #a3a3a3;
+$deep-grey: #303030;
+
+.container {
+	padding-left: 8%;
+	padding-right: 8%;
+}
+
+.header,
+.tasks {
+	margin-bottom: 2em;
+}
+
+.navbar {
+	background-color: $green;
+	border-radius: 3px;
+	padding: 1em;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	& > * {
+		color: inherit;
+		text-decoration: none;
+	}
+	&-brand {
+		font-size: 1.4em;
+	}
+	&-login {
+		& > * {
+			margin-left: 1em;
+		}
+		&-button {
+			color: $green;
+			text-decoration: none;
+			background-color: white;
+			padding: 8px 16px;
+			transition: background-color 0.3s;
+			border-radius: 3px;
+			&:hover {
+				background-color: $light-grey;
+			}
+		}
+	}
+}
+
+.pagination {
+	display: flex;
+	padding-left: 0;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+
+	li {
+		list-style: none;
+	}
+
+	button {
+		outline: none;
+		cursor: pointer;
+		color: black;
+		float: left;
+		padding: 8px 16px;
+		text-decoration: none;
+		transition: background-color 0.3s;
+		background-color: $light-grey;
+		border: 1px solid #ddd;
+		margin-right: 1px;
+		&.active {
+			background-color: $green;
+			color: white;
+			border: 1px solid $green;
+		}
+		&:hover:not(.active):not(:disabled) {
+			background-color: white;
+		}
+		&:disabled {
+			background-color: white;
+			color: $grey;
+		}
+	}
+}
+
+.tasks {
+	&-list {
+		&-item {
+			margin: 10px 0;
+			padding: 0 1em;
+			border: 1px solid #ccc;
+			box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+			color: $deep-grey;
+			&-content {
+				display: flex;
+				align-items: baseline;
+				font-size: 1.2em;
+				font-weight: bold;
+				justify-content: space-between;
+				padding: 0.5em 0;
+				input[type='checkbox'] {
+					margin-right: 0.5em;
+				}
+			}
+			&-info {
+				font-size: 0.8em;
+				a {
+					text-decoration: none;
+				}
+			}
+			p {
+				margin: 0.5em 0;
+			}
+			hr {
+				margin: 0.2em 0 0.1em;
+			}
+		}
+	}
+}
+
+.line-through {
+	text-decoration: line-through;
+}
+
+.flex {
+	display: flex;
+}
+
+.space-between {
+	justify-content: space-between;
+}
+
+.modal-container {
+	display: flex;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	overflow: auto; /* Enable scroll if needed */
+	&-content {
+		margin: auto;
+		background-color: white;
+		border-radius: 3px;
+		padding: 1em;
+	}
+}
