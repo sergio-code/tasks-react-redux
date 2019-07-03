@@ -35,12 +35,17 @@ $deep-grey: #303030;
 			margin-left: 1em;
 		}
 		&-button {
+			// can be applied for "button" and "a" elements
+			display: inline-block;
+			font: inherit;
+			cursor: pointer;
+			border: none;
+			border-radius: 3px;
 			color: $green;
 			text-decoration: none;
 			background-color: white;
 			padding: 8px 16px;
 			transition: background-color 0.3s;
-			border-radius: 3px;
 			&:hover {
 				background-color: $light-grey;
 			}
