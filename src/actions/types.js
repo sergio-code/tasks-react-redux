@@ -1,5 +1,7 @@
-export const SIGN_IN = 'SIGN_IN'
 export const SIGN_OUT = 'SIGN_OUT'
+export const SIGN_IN = 'SIGN_IN'
+export const SIGN_IN_SUCCESS = 'SIGN_IN'
+export const SIGN_IN_FAILURE = 'SIGN_IN'
 
 export const FETCH_TASKS = 'FETCH_TASKS'
 export const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS'
