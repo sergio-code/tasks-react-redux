@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import Header from './Header'
 import TasksPage from './TasksPage'
 import LoginPage from './LoginPage'
