@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
 import errors from './errors'
+import auth from './auth'
 import tasks from './tasks'
 import tasksPageNumber from './tasksPageNumber'
 import tasksPerPage from './tasksPerPage'
@@ -10,12 +11,13 @@ import showForm from './showForm'
 
 export default combineReducers({
 	form,
+	auth,
 	errors,
 	tasks,
 	tasksNavigation: combineReducers({
 		page: tasksPageNumber,
 		perPage: tasksPerPage,
-		sorting: tasksSorting,
+		sorting: tasksSorting
 	}),
 	tasksForm: combineReducers({
 		showForm,

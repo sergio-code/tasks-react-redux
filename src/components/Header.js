@@ -1,24 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { signOut } from '../actions'
 
-const Header = () => (
+const Header = ({ signOut, username, isLoggedIn }) => (
 	<header className="header">
-		<div className="container">
-			<nav className="navbar" aria-label="Site navigation bar">
-				<Link className="navbar-brand" to="/">
-					Tasks
-				</Link>
-				<div className="navbar-login">
-					<span className="navbar-login-info">
-						You SignedIn as admin
-					</span>
-					<Link className="navbar-login-button" to="/login">
+		<nav className="navbar" aria-label="Site navigation bar">
+			<Link className="navbar-brand" to="/">
+				Tasks
+			</Link>
+			<div className="navbar-login">
+				{isLoggedIn ? (
+					<span className="navbar-login-info">Hello, {username}</span>
+				) : null}
+				{isLoggedIn ? (
+					<button onClick={signOut} className="navbar-login-button">
 						SignOut
+					</button>
+				) : (
+					<Link className="navbar-login-button" to="/login">
+						SignIn
 					</Link>
-				</div>
-			</nav>
-		</div>
+				)}
+			</div>
+		</nav>
 	</header>
 )
 
-export default Header
+const mapStateToProps = (state) => {
+	const { username, isLoggedIn } = state.auth
+	return { username, isLoggedIn }
+}
+
+export default connect(
+	mapStateToProps,
+	{ signOut }
+)(Header)

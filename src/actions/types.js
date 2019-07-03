@@ -1,14 +1,11 @@
 export const SIGN_OUT = 'SIGN_OUT'
-export const SIGN_IN = 'SIGN_IN'
-export const SIGN_IN_SUCCESS = 'SIGN_IN'
-export const SIGN_IN_FAILURE = 'SIGN_IN'
+export const SIGN_IN_PROCESSING = 'SIGN_IN_PROCESSING'
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'
+export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE'
 
 export const FETCH_TASKS = 'FETCH_TASKS'
 export const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS'
 export const FETCH_TASKS_FAILURE = 'FETCH_TASKS_FAILURE'
-// export const TASKS_RESET = 'TASKS_RESET'
-
-// export const FETCH_TASK = 'FETCH_TASK'
 
 export const CREATE_TASK = 'CREATE_TASK'
 export const CREATE_TASK_SUCCESS = 'CREATE_TASK_SUCCESS'
