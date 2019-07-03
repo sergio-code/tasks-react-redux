@@ -4,11 +4,12 @@ import Header from './Header'
 import TasksPage from './TasksPage'
 import LoginPage from './LoginPage'
 import './App.scss'
+import history from '../history'
 
 function App() {
 	return (
 		<div className="app">
-			<Router>
+			<Router history={history}>
 				<Header />
 				<Switch>
 					<Route path="/" exact component={TasksPage} />
