@@ -54,10 +54,10 @@ const TaskFormUpdate = ({
 	error,
 	handleSubmit,
 	valid,
-	taskSubmitting
+	taskRequest
 }) => {
 	return (
-		<CoverAnimation animate={taskSubmitting}>
+		<CoverAnimation animate={taskRequest.submitting}>
 			<form className="form" onSubmit={handleSubmit(taskUpdate)}>
 				<h2 className="form-title">Edit task</h2>
 				<Field name="id" type="hidden" component="input" />
@@ -99,7 +99,7 @@ const TaskFormUpdate = ({
 					>
 						Cancel
 					</button>
-					<button type="submit" disabled={!valid || taskSubmitting}>
+					<button type="submit" disabled={!valid || taskRequest.submitting}>
 						OK
 					</button>
 				</div>
@@ -121,7 +121,7 @@ const formWrapped = reduxForm({
 const mapStateToProps = (state) => {
 	return {
 		initialValues: state.tasks.items[state.taskCurrentId] || {},
-		taskSubmitting: state.taskUpdating.submitting
+		taskRequest: state.tasksUpdating[state.taskCurrentId] || {}
 	}
 }
 
