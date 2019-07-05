@@ -44,13 +44,12 @@ const TaskList = ({
 		return Object.values(items).map((item) => {
 			const updating = itemsUpdating[item.id] || {}
 			return (
-				<CoverAnimation animate={updating.submitting}>
+				<CoverAnimation animate={updating.submitting} key={item.id}>
 					<TaskItem
 						task={item}
 						editable={isLoggedIn}
 						onSelect={handleSelect}
 						onToggle={handleToggle}
-						key={item.id}
 					/>
 				</CoverAnimation>
 			)
