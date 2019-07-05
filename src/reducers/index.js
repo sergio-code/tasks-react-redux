@@ -5,7 +5,6 @@ import auth from './auth'
 import tasks from './tasks'
 import tasksNavigation from './tasksNavigation'
 import taskCreation from './taskCreation'
-import taskUpdating from './taskUpdating'
 import tasksUpdating from './tasksUpdating'
 import taskOperation from './taskOperation'
 import taskCurrentId from './taskCurrentId'
@@ -17,7 +16,6 @@ export default combineReducers({
 	tasks,
 	tasksNavigation,
 	taskCreation,
-	taskUpdating,
 	tasksUpdating,
 	taskOperation,
 	taskCurrentId
