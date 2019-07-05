@@ -15,8 +15,9 @@ const TaskList = ({
 	setCurrentOperation,
 	taskUpdate,
 	loading,
-	items,
-	itemsUpdating,
+	tasks,
+	tasksUpdating,
+	taskOperation,
 	currentPage,
 	sortField,
 	sortDirection,
@@ -41,12 +42,12 @@ const TaskList = ({
 		if (loading) {
 			return <h3>Loading...</h3>
 		}
-		return Object.values(items).map((item) => {
-			const updating = itemsUpdating[item.id] || {}
+		return Object.values(tasks).map((task) => {
+			const taskRequest = tasksUpdating[task.id] || {}
 			return (
-				<CoverAnimation animate={updating.submitting} key={item.id}>
+				<CoverAnimation animate={taskOperation !=='edit' && taskRequest.submitting} key={task.id}>
 					<TaskItem
-						task={item}
+						task={task}
 						editable={isLoggedIn}
 						onSelect={handleSelect}
 						onToggle={handleToggle}
@@ -63,8 +64,9 @@ const masStateToProps = (state) => {
 	const { currentPage, sortField, sortDirection } = state.tasksNavigation
 	return {
 		loading: state.tasks.loading,
-		items: state.tasks.items,
-		itemsUpdating: state.tasksUpdating,
+		tasks: state.tasks.items,
+		taskOperation: state.taskOperation,
+		tasksUpdating: state.tasksUpdating,
 		currentPage,
 		sortField,
 		sortDirection,
