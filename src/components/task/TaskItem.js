@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TaskItem = ({ task, admin }) => {
+const TaskItem = ({ task, editable, onSelect, onToggle }) => {
 	return (
 		<article className="tasks-list-item">
 			<div className="tasks-list-item-content">
@@ -8,11 +8,15 @@ const TaskItem = ({ task, admin }) => {
 					<input
 						type="checkbox"
 						checked={task.status === 10 ? true : false}
-						readOnly={!admin}
+						readOnly={!editable}
+						disabled={!editable}
+						onChange={(e) => onToggle(task.id, e.target.checked)}
 					/>
 					{task.text}
 				</label>
-				{admin && <button>Edit</button>}
+				{editable && (
+					<button onClick={() => onSelect(task.id)}>Edit</button>
+				)}
 			</div>
 			<hr />
 			<p className="tasks-list-item-info">

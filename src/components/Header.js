@@ -4,10 +4,6 @@ import { connect } from 'react-redux'
 import { signOut } from '../actions'
 
 const renderButton = ({ isLoggedIn, signOut, location }) => {
-	console.log(location)
-	if (location.pathname === '/login') {
-		return null
-	}
 	if (isLoggedIn) {
 		return (
 			<button onClick={signOut} className="navbar-login-button">
@@ -15,7 +11,7 @@ const renderButton = ({ isLoggedIn, signOut, location }) => {
 			</button>
 		)
 	}
-	if (!isLoggedIn) {
+	if (!isLoggedIn && location.pathname !== '/login') {
 		return (
 			<Link className="navbar-login-button" to="/login">
 				SignIn
@@ -24,9 +20,7 @@ const renderButton = ({ isLoggedIn, signOut, location }) => {
 	}
 }
 
-const Header = (props) => {
-	console.log(props)
-	const { signOut, username, isLoggedIn, location } = props
+const Header = ({ signOut, username, isLoggedIn, location }) => {
 	return (
 		<header className="header">
 			<nav className="navbar" aria-label="Site navigation bar">

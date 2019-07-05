@@ -1,20 +1,20 @@
 import { mapKeys } from 'lodash'
 import {
-	FETCH_TASKS,
+	FETCH_TASKS_ACTION,
 	FETCH_TASKS_SUCCESS,
-	FETCH_TASKS_FAILURE
+	FETCH_TASKS_FAILURE,
+	EDIT_TASK_SUCCESS
 } from '../actions/types'
 
 const initialState = {
 	items: {},
-	total: 0,
-	error: null,
-	loading: false
+	loading: false,
+	error: null
 }
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case FETCH_TASKS:
+		case FETCH_TASKS_ACTION:
 			return { ...state, loading: true }
 
 		case FETCH_TASKS_SUCCESS:
@@ -28,6 +28,23 @@ export default (state = initialState, action) => {
 
 		case FETCH_TASKS_FAILURE:
 			return { ...state, error: action.payload, loading: false }
+
+		case EDIT_TASK_SUCCESS: {
+			const { payload } = action
+			const item = state.items[payload.id]
+			if (item) {
+				const updatedItem = { ...item, ...payload }
+				return {
+					...state,
+					items: {
+						...state.items,
+						[payload.id]: updatedItem
+					}
+				}
+			} else {
+				return state
+			}
+		}
 
 		default:
 			return state

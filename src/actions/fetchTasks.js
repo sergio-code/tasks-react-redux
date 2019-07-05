@@ -1,30 +1,28 @@
 import {
 	FETCH_TASKS_SUCCESS,
 	FETCH_TASKS_FAILURE,
-	FETCH_TASKS,
-	SET_TASKS_PER_PAGE
-	// CREATE_TASK,
-	// CREATE_TASK_SUCCESS,
-	// CREATE_TASK_FAILURE,
-	// EDIT_TASK,
-	// EDIT_TASK_SUCCESS,
-	// EDIT_TASK_FAILURE,
+	FETCH_TASKS_ACTION,
+	SET_TASKS_NAVIGATION
 } from './types'
 
-import * as client from '../apis/tasks'
+import * as client from '../apis'
 
 // FETCH_TASKS
 export const fetchTasks = () => async (dispatch, getState) => {
-	dispatch({ type: FETCH_TASKS })
+	dispatch({ type: FETCH_TASKS_ACTION })
 
-	const { page, sorting } = getState().tasksNavigation
+	const {
+		itemsPerPage,
+		currentPage: page,
+		sortField,
+		sortDirection
+	} = getState().tasksNavigation
 
 	try {
-		// WORKAROUND
-		// LOAD FIRST PAGE TO KNOW HOW MANY ITEMS PER PAGE
-		if (page !== 1) {
-			const { data, status, statusText } = await client.get({
-				...sorting,
+		// WORKAROUND TO KNOW HOW MANY ITEMS PER PAGE (NOT PROVIDED IN RESPONSE)
+		// LOAD FIRST PAGE
+		if (page !== 1 && !itemsPerPage) {
+			const { data, status, statusText } = await client.getTasksPage({
 				page: 1
 			})
 			if (status < 200 && status >= 300) {
@@ -32,17 +30,22 @@ export const fetchTasks = () => async (dispatch, getState) => {
 				throw new Error('Network error')
 			}
 			if (data.status === 'ok') {
-				const { tasks } = data.message
-				dispatch({ type: SET_TASKS_PER_PAGE, payload: tasks.length })
+				dispatch({
+					type: SET_TASKS_NAVIGATION,
+					payload: {
+						itemsPerPage: data.message.tasks.length
+					}
+				})
 			} else {
 				console.error(data)
 				dispatch({ type: FETCH_TASKS_FAILURE, payload: data.message })
 			}
 		}
 		// LOAD PAGE
-		const { data, status, statusText } = await client.get({
-			...sorting,
-			page
+		const { data, status, statusText } = await client.getTasksPage({
+			page,
+			sortField,
+			sortDirection
 		})
 
 		if (status < 200 && status >= 300) {
@@ -54,14 +57,19 @@ export const fetchTasks = () => async (dispatch, getState) => {
 			const { tasks, total_task_count } = data.message
 			dispatch({
 				type: FETCH_TASKS_SUCCESS,
-				payload: {
-					items: tasks,
-					total: parseInt(total_task_count, 10)
-				}
+				payload: { items: tasks }
 			})
-			if (page === 1) {
-				dispatch({ type: SET_TASKS_PER_PAGE, payload: tasks.length })
+			// Update tasks {total} quantity and {itemsPerPage}
+			const navigationPayload = {
+				total: parseInt(total_task_count, 10)
 			}
+			if (page === 1) {
+				navigationPayload.itemsPerPage = tasks.length
+			}
+			dispatch({
+				type: SET_TASKS_NAVIGATION,
+				payload: navigationPayload
+			})
 		} else {
 			console.error(data)
 			dispatch({

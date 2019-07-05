@@ -1,9 +1,10 @@
 import React from 'react'
 import { Router, Route, Switch } from 'react-router-dom'
 import Header from './Header'
-import TasksPage from './TasksPage'
+import MainPage from './MainPage'
 import LoginPage from './LoginPage'
-import './App.scss'
+import Errors from './Errors'
+import '../styles/App.scss'
 import history from '../history'
 
 function App() {
@@ -12,10 +13,11 @@ function App() {
 			<Router history={history}>
 				<Header />
 				<Switch>
-					<Route path="/" exact component={TasksPage} />
+					<Route path="/" exact component={MainPage} />
 					<Route path="/login" exact component={LoginPage} />
 				</Switch>
 			</Router>
+			<Errors />
 		</div>
 	)
 }

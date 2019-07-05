@@ -1,5 +1,6 @@
 export { default as TaskList } from './TaskList'
-export { default as TaskForm } from './TaskForm'
+export { default as TaskFormCreate } from './TaskFormCreate'
+export { default as TaskFormUpdate } from './TaskFormUpdate'
 export { default as TaskSorting } from './TaskSorting'
 export { default as TaskItem } from './TaskItem'
 export { default as TaskAddButton } from './TaskAddButton'

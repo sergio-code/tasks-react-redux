@@ -1,11 +1,38 @@
-$green: #4caf50;
-$light-grey: #dbdbdb;
-$grey: #a3a3a3;
-$deep-grey: #303030;
+@import './variables';
+@import './index';
+@import './errors';
+@import './modal';
+@import './form';
+
+button,
+select {
+	padding: 0.3em 0.4em;
+	margin-left: 1px;
+	margin-top: 1px;
+}
+
+.header {
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 900px;
+}
 
 .container {
-	padding-left: 8%;
-	padding-right: 8%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 900px;
+	padding-left: 4%;
+	padding-right: 4%;
+}
+
+.login {
+	min-width: 280px;
+	max-width: 450px;
+	margin: 0 auto 100px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	border-radius: 3px;
 }
 
 .header,
@@ -15,7 +42,6 @@ $deep-grey: #303030;
 
 .navbar {
 	background-color: $green;
-	border-radius: 3px;
 	padding: 1em;
 	color: white;
 	font-weight: bold;
@@ -75,7 +101,8 @@ $deep-grey: #303030;
 		transition: background-color 0.3s;
 		background-color: $light-grey;
 		border: 1px solid #ddd;
-		margin-right: 1px;
+		margin-left: 1px;
+		margin-bottom: 1px;
 		&.active {
 			background-color: $green;
 			color: white;
@@ -98,6 +125,7 @@ $deep-grey: #303030;
 			padding: 0 1em;
 			border: 1px solid #ccc;
 			box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+			border-radius: 3px;
 			color: $deep-grey;
 			&-content {
 				display: flex;
@@ -138,20 +166,16 @@ $deep-grey: #303030;
 	justify-content: space-between;
 }
 
-.modal-container {
-	display: flex;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-	overflow: auto; /* Enable scroll if needed */
-	&-content {
-		margin: auto;
-		background-color: white;
-		border-radius: 3px;
-		padding: 1em;
+@media (min-width: 768px) {
+	.container {
+		padding-left: 8%;
+		padding-right: 8%;
+	}
+	.header {
+		padding-left: 8%;
+		padding-right: 8%;
+		.navbar {
+			border-radius: 3px;
+		}
 	}
 }

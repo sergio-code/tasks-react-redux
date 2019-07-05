@@ -3,24 +3,20 @@ import { reducer as form } from 'redux-form'
 import errors from './errors'
 import auth from './auth'
 import tasks from './tasks'
-import tasksPageNumber from './tasksPageNumber'
-import tasksPerPage from './tasksPerPage'
-import tasksSorting from './tasksSorting'
-import selectedTask from './selectedTask'
-import showForm from './showForm'
+import tasksNavigation from './tasksNavigation'
+import taskCreation from './taskCreation'
+import taskUpdating from './taskUpdating'
+import taskOperation from './taskOperation'
+import taskCurrentId from './taskCurrentId'
 
 export default combineReducers({
 	form,
 	auth,
 	errors,
 	tasks,
-	tasksNavigation: combineReducers({
-		page: tasksPageNumber,
-		perPage: tasksPerPage,
-		sorting: tasksSorting
-	}),
-	tasksForm: combineReducers({
-		showForm,
-		selectedTask
-	})
+	tasksNavigation,
+	taskCreation,
+	taskUpdating,
+	taskOperation,
+	taskCurrentId
 })

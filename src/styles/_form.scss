@@ -1,0 +1,84 @@
+.form {
+	padding: 2em;
+	&-title {
+		margin: 1em auto;
+		text-align: center;
+	}
+	&-group {
+		display: flex; // use flexbox
+		flex-direction: column; // vertical layout
+		@media screen and (min-width: 768px) {
+			flex-direction: row; // horizontal layout
+		}
+	}
+	&-group > * {
+		flex: 1; // grow to fill
+	}
+	&-group label {
+		flex: none; // don't grow
+		@media screen and (min-width: 768px) {
+			order: -1; // make sure the label is first
+		}
+	}
+	.checkbox {
+		flex-direction: row; // horizontal layout
+	}
+	.checkbox > * {
+		flex: none; // don't grow
+	}
+
+	// non-flexbox styles
+	&-group {
+		margin-bottom: 1em;
+	}
+	label {
+		margin-right: 1em;
+		font-weight: bold;
+		@media screen and (min-width: 768px) {
+			width: 150px;
+			text-align: right;
+		}
+	}
+	.checkbox {
+		label {
+			margin-left: 0.5em;
+			@media screen and (min-width: 768px) {
+				margin-left: 0;
+			}
+		}
+	}
+	input {
+		width: 100%;
+	}
+	input[type='checkbox'] {
+		width: auto;
+	}
+	input,
+	button {
+		font-size: 16px;
+	}
+	.actions {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		& > * {
+			margin-left: 1em;
+			margin-bottom: 1em;
+		}
+	}
+
+	.help-block {
+		font-size: smaller;
+		margin: 0.25em 0 0;
+	}
+	form {
+		background: #fff;
+		margin: 1em auto;
+		padding: 1em;
+	}
+	body {
+		background: #ccc;
+		margin: 0;
+		font-size: 16px;
+	}
+}
