@@ -67,7 +67,7 @@ export const editTask = (values, invokedByReduxForm = true) => async (
 	} catch (error) {
 		dispatch({ type: EDIT_TASK_FAILURE, payload: { error, id: values.id } })
 		// Pass redux-form error
-		if (error.name === 'SubmissionError') {
+		if (error.name === SubmissionError.name) {
 			throw error
 		}
 		// Show non redux-form errors

@@ -40,7 +40,7 @@ export const createTask = (values, invokedByReduxForm = true) => async (
 
 		// Pass redux-form error
 		if (invokedByReduxForm) {
-			if (error.name === 'SubmissionError') {
+			if (error.name === SubmissionError.name) {
 				throw error
 			} else {
 				throw new SubmissionError({

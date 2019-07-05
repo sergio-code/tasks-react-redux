@@ -47,6 +47,7 @@ export const signIn = (
 	} catch (error) {
 		console.log(error)
 
+
 		dispatch({
 			type: SIGN_IN_FAILURE,
 			payload: { error: error.message }
@@ -54,7 +55,7 @@ export const signIn = (
 
 		// Pass redux-form error
 		if (invokedByReduxForm) {
-			if (error.name === 'SubmissionError') {
+			if (error.name === SubmissionError.name) {
 				throw error
 			} else {
 				throw new SubmissionError({
