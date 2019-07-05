@@ -16,6 +16,7 @@ const TaskList = ({
 	editTask,
 	loading,
 	items,
+	itemsUpdating,
 	currentPage,
 	sortField,
 	sortDirection,
@@ -40,15 +41,16 @@ const TaskList = ({
 		if (loading) {
 			return <h3>Loading...</h3>
 		}
-		return Object.values(items).map((task) => {
+		return Object.values(items).map((item) => {
+			const updating = itemsUpdating[item.id] || {}
 			return (
-				<CoverAnimation animate={true}>
+				<CoverAnimation animate={updating.submitting}>
 					<TaskItem
-						task={task}
+						task={item}
 						editable={isLoggedIn}
 						onSelect={handleSelect}
 						onToggle={handleToggle}
-						key={task.id}
+						key={item.id}
 					/>
 				</CoverAnimation>
 			)
@@ -63,6 +65,7 @@ const masStateToProps = (state) => {
 	return {
 		loading: state.tasks.loading,
 		items: state.tasks.items,
+		itemsUpdating: state.tasksUpdating,
 		currentPage,
 		sortField,
 		sortDirection,

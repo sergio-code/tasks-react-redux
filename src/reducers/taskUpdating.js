@@ -18,7 +18,7 @@ export default (state = initState, action) => {
 			return { submitting: false, error: null }
 
 		case EDIT_TASK_FAILURE:
-			return { submitting: false, error: action.payload }
+			return { submitting: false, error: action.payload.error }
 
 		default:
 			return state

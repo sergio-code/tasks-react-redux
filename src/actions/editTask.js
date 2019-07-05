@@ -25,7 +25,7 @@ export const editTask = (values, invokedByReduxForm = true) => async (
 			payload.status = values.status ? 10 : 0
 		}
 	}
-	dispatch({ type: EDIT_TASK_ACTION })
+	dispatch({ type: EDIT_TASK_ACTION, payload: { id: values.id } })
 	try {
 		const { data, status, statusText } = await client.editTask(
 			values.id,
@@ -65,7 +65,7 @@ export const editTask = (values, invokedByReduxForm = true) => async (
 			}
 		}
 	} catch (error) {
-		dispatch({ type: EDIT_TASK_FAILURE, payload: error })
+		dispatch({ type: EDIT_TASK_FAILURE, payload: { error, id: values.id } })
 		// Pass redux-form error
 		if (error.name === 'SubmissionError') {
 			throw error
