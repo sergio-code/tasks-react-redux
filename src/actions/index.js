@@ -7,9 +7,9 @@ import {
 	REMOVE_ERROR
 } from './types'
 
-export * from './fetchTasks'
-export * from './createTask'
-export * from './editTask'
+export * from './tasksFetch'
+export * from './taskCreate'
+export * from './taskUpdate'
 export * from './signIn'
 
 export const signOut = () => {

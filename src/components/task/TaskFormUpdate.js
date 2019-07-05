@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm, reset } from 'redux-form'
 import { connect } from 'react-redux'
-import { editTask, setCurrentOperation } from '../../actions'
+import { taskUpdate, setCurrentOperation } from '../../actions'
 import CoverAnimation from '../CoverAnimation'
 
 const FORM_NAME = 'taskUpdate'
@@ -49,7 +49,7 @@ const renderField = ({
 }
 
 const TaskFormUpdate = ({
-	editTask,
+	taskUpdate,
 	setCurrentOperation,
 	error,
 	handleSubmit,
@@ -58,7 +58,7 @@ const TaskFormUpdate = ({
 }) => {
 	return (
 		<CoverAnimation animate={taskSubmitting}>
-			<form className="form" onSubmit={handleSubmit(editTask)}>
+			<form className="form" onSubmit={handleSubmit(taskUpdate)}>
 				<h2 className="form-title">Edit task</h2>
 				<Field name="id" type="hidden" component="input" />
 				<Field
@@ -127,5 +127,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
 	mapStateToProps,
-	{ editTask, setCurrentOperation }
+	{ taskUpdate, setCurrentOperation }
 )(formWrapped)

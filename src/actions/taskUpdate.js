@@ -9,7 +9,7 @@ import {
 import history from '../history'
 import * as client from '../apis'
 
-export const editTask = (values, invokedByReduxForm = true) => async (
+export const taskUpdate = (values, invokedByReduxForm = true) => async (
 	dispatch,
 	getState
 ) => {

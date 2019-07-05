@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
-	fetchTasks,
+	tasksFetch,
+	taskUpdate,
 	setCurrentTask,
-	editTask,
 	setCurrentOperation
 } from '../../actions'
 import TaskItem from './TaskItem'
 import CoverAnimation from '../CoverAnimation'
 
 const TaskList = ({
-	fetchTasks,
+	tasksFetch,
 	setCurrentTask,
 	setCurrentOperation,
-	editTask,
+	taskUpdate,
 	loading,
 	items,
 	itemsUpdating,
@@ -23,7 +23,7 @@ const TaskList = ({
 	isLoggedIn
 }) => {
 	useEffect(() => {
-		fetchTasks()
+		tasksFetch()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentPage, sortField, sortDirection])
 
@@ -34,7 +34,7 @@ const TaskList = ({
 
 	const handleToggle = (id, statusBool) => {
 		const status = statusBool ? 10 : 0
-		editTask({ id, status }, false)
+		taskUpdate({ id, status }, false)
 	}
 
 	const renderList = () => {
@@ -75,5 +75,5 @@ const masStateToProps = (state) => {
 
 export default connect(
 	masStateToProps,
-	{ fetchTasks, setCurrentTask, editTask, setCurrentOperation }
+	{ tasksFetch, setCurrentTask, taskUpdate, setCurrentOperation }
 )(TaskList)

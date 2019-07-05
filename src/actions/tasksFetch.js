@@ -5,10 +5,10 @@ import {
 	SET_TASKS_NAVIGATION
 } from './types'
 
-import * as client from '../apis'
+import { getTasksPage } from '../apis'
 
 // FETCH_TASKS
-export const fetchTasks = () => async (dispatch, getState) => {
+export const tasksFetch = () => async (dispatch, getState) => {
 	dispatch({ type: FETCH_TASKS_ACTION })
 
 	const {
@@ -22,7 +22,7 @@ export const fetchTasks = () => async (dispatch, getState) => {
 		// WORKAROUND TO KNOW HOW MANY ITEMS PER PAGE (NOT PROVIDED IN RESPONSE)
 		// LOAD FIRST PAGE
 		if (page !== 1 && !itemsPerPage) {
-			const { data, status, statusText } = await client.getTasksPage({
+			const { data, status, statusText } = await getTasksPage({
 				page: 1
 			})
 			if (status < 200 && status >= 300) {
@@ -42,7 +42,7 @@ export const fetchTasks = () => async (dispatch, getState) => {
 			}
 		}
 		// LOAD PAGE
-		const { data, status, statusText } = await client.getTasksPage({
+		const { data, status, statusText } = await getTasksPage({
 			page,
 			sortField,
 			sortDirection

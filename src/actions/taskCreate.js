@@ -5,11 +5,11 @@ import {
 	CREATE_TASK_SUCCESS,
 	CREATE_TASK_FAILURE
 } from './types'
-import { fetchTasks } from './'
+import { tasksFetch } from '.'
 
 import { createTask as apiCreateTask } from '../apis'
 
-export const createTask = (values, invokedByReduxForm = true) => async (
+export const taskCreate = (values, invokedByReduxForm = true) => async (
 	dispatch
 ) => {
 	dispatch({ type: CREATE_TASK_ACTION })
@@ -24,7 +24,7 @@ export const createTask = (values, invokedByReduxForm = true) => async (
 		if (data.status === 'ok') {
 			dispatch({ type: CREATE_TASK_SUCCESS })
 			// Fetch tasks updates
-			dispatch(fetchTasks())
+			dispatch(tasksFetch())
 		} else {
 			if (invokedByReduxForm && data && data.message) {
 				throw new SubmissionError({
