@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { orderBy } from 'lodash'
 import {
 	tasksFetch,
 	taskUpdate,
@@ -42,10 +43,14 @@ const TaskList = ({
 		if (loading) {
 			return <h3>Loading...</h3>
 		}
-		return Object.values(tasks).map((task) => {
+
+		return orderBy(tasks, sortField, sortDirection).map((task) => {
 			const taskRequest = tasksUpdating[task.id] || {}
 			return (
-				<CoverAnimation animate={taskOperation !=='edit' && taskRequest.submitting} key={task.id}>
+				<CoverAnimation
+					animate={taskOperation !== 'edit' && taskRequest.submitting}
+					key={task.id}
+				>
 					<TaskItem
 						task={task}
 						editable={isLoggedIn}
