@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field, reduxForm, reset } from 'redux-form'
 import { connect } from 'react-redux'
+import { mapValues, unescape } from 'lodash'
 import { taskUpdate, setCurrentOperation } from '../../actions'
 import CoverAnimation from '../CoverAnimation'
 
@@ -99,7 +100,10 @@ const TaskFormUpdate = ({
 					>
 						Cancel
 					</button>
-					<button type="submit" disabled={!valid || taskRequest.submitting}>
+					<button
+						type="submit"
+						disabled={!valid || taskRequest.submitting}
+					>
 						OK
 					</button>
 				</div>
@@ -119,8 +123,10 @@ const formWrapped = reduxForm({
 })(TaskFormUpdate)
 
 const mapStateToProps = (state) => {
+	const taskValues = state.tasks.items[state.taskCurrentId] || {}
+	const initialValues = mapValues(taskValues, unescape)
 	return {
-		initialValues: state.tasks.items[state.taskCurrentId] || {},
+		initialValues,
 		taskRequest: state.tasksUpdating[state.taskCurrentId] || {}
 	}
 }
