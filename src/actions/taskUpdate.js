@@ -13,6 +13,7 @@ export const taskUpdate = (values, invokedByReduxForm = true) => async (
 	dispatch,
 	getState
 ) => {
+	// Prepare request payload
 	const token = getState().auth.token
 	const payload = { token }
 	if (values.text) {
@@ -45,22 +46,36 @@ export const taskUpdate = (values, invokedByReduxForm = true) => async (
 					...omit(payload, ['token'])
 				}
 			})
-		} else if (data.status === 'error' && data.message.token) {
+		} else if (
+			data.status === 'error' &&
+			data.message &&
+			data.message.token
+		) {
+			const error =
+				'Authentication is expired or invalid. Please login again.'
 			dispatch({
-				type: SHOW_ERROR,
-				payload:
-					'Authentication is expired or invalid. Please login again.'
+				type: EDIT_TASK_FAILURE,
+				payload: {
+					error,
+					id: values.id
+				}
 			})
+			dispatch({ type: SHOW_ERROR, payload: error })
 			history.push('/login')
 		} else {
+			const error = 'Error: ' + JSON.stringify(data.message, null, ' ')
 			dispatch({
-				type: SHOW_ERROR,
-				payload: 'Error: ' + JSON.stringify(data.message, null, ' ')
+				type: EDIT_TASK_FAILURE,
+				payload: {
+					error,
+					id: values.id
+				}
 			})
+			dispatch({ type: SHOW_ERROR, payload: error })
 			if (invokedByReduxForm) {
 				throw new SubmissionError({
 					...data.message,
-					_error: 'Operation is failed!'
+					_error: 'Task update is failed!'
 				})
 			}
 		}
