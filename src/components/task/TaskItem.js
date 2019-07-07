@@ -1,4 +1,5 @@
 import React from 'react'
+import { unescape } from 'lodash'
 
 const TaskItem = ({ task, editable, onSelect, onToggle }) => {
 	return (
@@ -12,7 +13,7 @@ const TaskItem = ({ task, editable, onSelect, onToggle }) => {
 						disabled={!editable}
 						onChange={(e) => onToggle(task.id, e.target.checked)}
 					/>
-					{task.text}
+					{unescape(task.text)}
 				</label>
 				{editable && (
 					<button onClick={() => onSelect(task.id)}>Edit</button>
@@ -21,7 +22,7 @@ const TaskItem = ({ task, editable, onSelect, onToggle }) => {
 			<hr />
 			<p className="tasks-list-item-info">
 				<a href={`mailto:${task.email}`}>{task.email}</a> |{' '}
-				{task.username}
+				{unescape(task.username)}
 			</p>
 		</article>
 	)
