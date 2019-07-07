@@ -40,6 +40,7 @@ export const taskCreate = (values, invokedByReduxForm = true) => async (
 
 		// Pass redux-form error
 		if (invokedByReduxForm) {
+			// https://github.com/erikras/redux-form/issues/4302
 			if (error.name === SubmissionError.name) {
 				throw error
 			} else {
