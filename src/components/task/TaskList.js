@@ -41,7 +41,11 @@ const TaskList = ({
 
 	const renderList = () => {
 		if (loading) {
-			return <h3>Loading...</h3>
+			return (
+				<CoverAnimation animate>
+					<div style={{ height: '18em' }} />
+				</CoverAnimation>
+			)
 		}
 
 		return orderBy(tasks, sortField, sortDirection).map((task) => {
