@@ -1,7 +1,5 @@
 import axios from 'axios'
-
-const DEVELOPER_NAME = 'test'
-const BASE_URL = 'https://uxcandy.com/~shapoval/test-task-backend/v2'
+import { BASE_URL, DEVELOPER_NAME } from './configuration'
 
 export function getTasksPage({
 	page = 1,
