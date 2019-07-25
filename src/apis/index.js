@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { BASE_URL, DEVELOPER_NAME } from './configuration'
+import { BASE_URL, DEVELOPER_NAME } from '../configuration'
 
 export function getTasksPage({
 	page = 1,

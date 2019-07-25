@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { connect } from 'react-redux'
-import { setNavigation } from '../../actions'
+import { setNavigation } from '../actions'
 
 const TaskSorting = ({ setNavigation, sortField, sortDirection }) => {
 	const [showButton, setShowButton] = useState(false)

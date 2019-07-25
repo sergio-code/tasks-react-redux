@@ -1,12 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-	TaskList,
-	TaskSorting,
-	TaskAddButton,
-	TaskFormCreate,
-	TaskFormUpdate
-} from './task'
+import TaskList from './TaskList'
+import TaskSorting from './TaskSorting'
+import TaskAddButton from './TaskAddButton'
+import TaskFormCreate from './TaskFormCreate'
+import TaskFormUpdate from './TaskFormUpdate'
 import Pagination from './Pagination'
 import Modal from './Modal'
 import { setNavigation, setCurrentOperation } from '../actions'

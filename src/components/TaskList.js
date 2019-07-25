@@ -6,9 +6,9 @@ import {
 	taskUpdate,
 	setCurrentTask,
 	setCurrentOperation
-} from '../../actions'
+} from '../actions'
 import TaskItem from './TaskItem'
-import CoverAnimation from '../CoverAnimation'
+import CoverAnimation from './CoverAnimation'
 
 const TaskList = ({
 	tasksFetch,

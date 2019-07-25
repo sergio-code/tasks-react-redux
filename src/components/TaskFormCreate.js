@@ -1,8 +1,8 @@
 import React from 'react'
 import { Field, reduxForm, reset } from 'redux-form'
 import { connect } from 'react-redux'
-import { taskCreate, setCurrentOperation } from '../../actions'
-import CoverAnimation from '../CoverAnimation'
+import { taskCreate, setCurrentOperation } from '../actions'
+import CoverAnimation from './CoverAnimation'
 
 const FORM_NAME = 'taskCreate'
 
