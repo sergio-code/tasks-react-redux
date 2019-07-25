@@ -2,6 +2,13 @@
   <img src="https://i.ibb.co/HP8DnpL/tasksreactapp-surge-sh.png" alt="PWA Calculator">
 </p>
 
+## DEMO
+https://tasksreactapp.surge.sh/
+
+Login: admin
+
+Password: 123
+
 ## Tasks App (Test task)
 
 Functionality:
@@ -203,6 +210,9 @@ Response example (success):
 
 ## Credits
 - [Pagination in ReactJS by Agoi Abel](https://medium.com/@agoiabeladeyemi/pagination-in-reactjs-36f4a6a6eb43)
+- [The best way to architect your Redux app by Lusan Das](https://www.freecodecamp.org/news/the-best-way-to-architect-your-redux-app-ad9bd16c8e2d/)
+- [Redux FAQ: Code Structure](https://redux.js.org/faq/code-structure)
+- [React and Redux Design Patterns @learnhowtoprogram.com](https://www.learnhowtoprogram.com/react/advanced-topics/react-and-redux-design-patterns)
 
 ## License
 MIT © Sergio Gromov
