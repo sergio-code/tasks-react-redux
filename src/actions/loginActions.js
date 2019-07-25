@@ -4,11 +4,18 @@ import history from '../history'
 import {
 	SIGN_IN_ACTION,
 	SIGN_IN_SUCCESS,
-	SHOW_ERROR,
-	SIGN_IN_FAILURE
+	SIGN_IN_FAILURE,
+	SIGN_OUT,
+	SHOW_ERROR
 } from './types'
 
 import { login } from '../apis'
+
+export const signOut = () => {
+	return {
+		type: SIGN_OUT
+	}
+}
 
 export const signIn = (
 	{ username, password },
@@ -46,7 +53,6 @@ export const signIn = (
 		}
 	} catch (error) {
 		console.log(error)
-
 
 		dispatch({
 			type: SIGN_IN_FAILURE,

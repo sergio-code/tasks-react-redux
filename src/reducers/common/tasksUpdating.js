@@ -1,14 +1,14 @@
 import {
-	EDIT_TASK_ACTION,
+	EDIT_TASK,
 	EDIT_TASK_SUCCESS,
 	EDIT_TASK_FAILURE
-} from '../actions/types'
+} from '../../actions/types'
 
 const initState = {}
 
 export default (state = initState, action) => {
 	switch (action.type) {
-		case EDIT_TASK_ACTION:
+		case EDIT_TASK:
 			return {
 				...state,
 				[action.payload.id]: { submitting: true, error: null }

@@ -1,8 +1,8 @@
 import {
-	CREATE_TASK_ACTION,
+	CREATE_TASK,
 	CREATE_TASK_SUCCESS,
 	CREATE_TASK_FAILURE
-} from '../actions/types'
+} from '../../actions/types'
 
 const initState = {
 	submitting: false,
@@ -11,7 +11,7 @@ const initState = {
 
 export default (state = initState, action) => {
 	switch (action.type) {
-		case CREATE_TASK_ACTION:
+		case CREATE_TASK:
 			return { submitting: true, error: null }
 
 		case CREATE_TASK_SUCCESS:

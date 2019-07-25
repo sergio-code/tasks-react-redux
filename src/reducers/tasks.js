@@ -1,6 +1,6 @@
 import { mapKeys } from 'lodash'
 import {
-	FETCH_TASKS_ACTION,
+	FETCH_TASKS_DATA,
 	FETCH_TASKS_SUCCESS,
 	FETCH_TASKS_FAILURE,
 	EDIT_TASK_SUCCESS
@@ -14,7 +14,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case FETCH_TASKS_ACTION:
+		case FETCH_TASKS_DATA:
 			return { ...state, loading: true }
 
 		case FETCH_TASKS_SUCCESS:

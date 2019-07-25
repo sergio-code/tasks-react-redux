@@ -1,22 +1,19 @@
 import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
 import errors from './errors'
-import auth from './auth'
+import login from './login'
 import tasks from './tasks'
-import tasksNavigation from './tasksNavigation'
-import taskCreation from './taskCreation'
-import tasksUpdating from './tasksUpdating'
-import taskOperation from './taskOperation'
-import taskCurrentId from './taskCurrentId'
+import modal from './modal'
+import navigation from './navigation'
+import common from './common'
+
 
 export default combineReducers({
 	form,
-	auth,
+	login,
+	modal,
 	errors,
 	tasks,
-	tasksNavigation,
-	taskCreation,
-	tasksUpdating,
-	taskOperation,
-	taskCurrentId
+	navigation,
+	common
 })
