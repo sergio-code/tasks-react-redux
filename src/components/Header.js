@@ -41,7 +41,7 @@ const Header = ({ signOut, username, isLoggedIn, location }) => {
 }
 
 const mapStateToProps = (state) => {
-	const { username, isLoggedIn } = state.auth
+	const { username, isLoggedIn } = state.login
 	return { username, isLoggedIn }
 }
 

@@ -1,14 +1,23 @@
 import React from 'react'
 import { unescape } from 'lodash'
+import { TASK_STATUS_COMPLETED } from '../configuration'
 
 const TaskItem = ({ task, editable, onSelect, onToggle }) => {
 	return (
 		<article className="tasks-list-item">
 			<div className="tasks-list-item-content">
-				<label className={task.status === 10 ? 'line-through' : null}>
+				<label
+					className={
+						task.status === TASK_STATUS_COMPLETED
+							? 'line-through'
+							: null
+					}
+				>
 					<input
 						type="checkbox"
-						checked={task.status === 10 ? true : false}
+						checked={
+							task.status === TASK_STATUS_COMPLETED ? true : false
+						}
 						readOnly={!editable}
 						disabled={!editable}
 						onChange={(e) => onToggle(task.id, e.target.checked)}

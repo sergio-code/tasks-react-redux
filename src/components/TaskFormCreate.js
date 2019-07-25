@@ -8,16 +8,22 @@ const FORM_NAME = 'taskCreate'
 
 const validate = (values) => {
 	const errors = {}
+
 	if (!values.text) {
 		errors.text = 'Required'
 	} else if (values.text.length < 10) {
 		errors.text = 'Must be 10 characters or more'
 	}
+
 	if (!values.username) {
 		errors.username = 'Required'
 	} else if (values.username.length > 20) {
 		errors.username = 'Must be 20 characters or less'
+	} else if (!/^[A-Z0-9]+[._]?[A-Z0-9]+$/i.test(values.username)) {
+		errors.username =
+			'Must contains only chars, numbers, and possible one underscore or point in the middle'
 	}
+
 	if (!values.email) {
 		errors.email = 'Required'
 	} else if (
@@ -25,6 +31,7 @@ const validate = (values) => {
 	) {
 		errors.email = 'Invalid email address'
 	}
+
 	return errors
 }
 
@@ -124,7 +131,7 @@ const formWrapped = reduxForm({
 
 const mapStateToProps = (state) => {
 	return {
-		taskSubmitting: state.taskCreation.submitting
+		taskSubmitting: state.common.taskCreation.submitting
 	}
 }
 

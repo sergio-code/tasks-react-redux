@@ -9,6 +9,11 @@ import {
 } from '../actions'
 import TaskItem from './TaskItem'
 import CoverAnimation from './CoverAnimation'
+import {
+	EDIT_OPERATION,
+	TASK_STATUS_COMPLETED,
+	TASK_STATUS_NOT_COMPLETED
+} from '../configuration'
 
 const TaskList = ({
 	tasksFetch,
@@ -31,11 +36,13 @@ const TaskList = ({
 
 	const handleSelect = (id) => {
 		setCurrentTask(id)
-		setCurrentOperation('edit')
+		setCurrentOperation(EDIT_OPERATION)
 	}
 
-	const handleToggle = (id, statusBool) => {
-		const status = statusBool ? 10 : 0
+	const handleToggle = (id, statusValue) => {
+		const status = statusValue
+			? TASK_STATUS_COMPLETED
+			: TASK_STATUS_NOT_COMPLETED
 		taskUpdate({ id, status }, false)
 	}
 
@@ -52,7 +59,10 @@ const TaskList = ({
 			const taskRequest = tasksUpdating[task.id] || {}
 			return (
 				<CoverAnimation
-					animate={taskOperation !== 'edit' && taskRequest.submitting}
+					animate={
+						taskOperation !== EDIT_OPERATION &&
+						taskRequest.submitting
+					}
 					key={task.id}
 				>
 					<TaskItem
@@ -69,21 +79,21 @@ const TaskList = ({
 	return <div className="tasks-list">{renderList()}</div>
 }
 
-const masStateToProps = (state) => {
-	const { currentPage, sortField, sortDirection } = state.tasksNavigation
+const mapStateToProps = (state) => {
+	const { currentPage, sortField, sortDirection } = state.navigation
 	return {
 		loading: state.tasks.loading,
 		tasks: state.tasks.items,
-		taskOperation: state.taskOperation,
-		tasksUpdating: state.tasksUpdating,
+		taskOperation: state.modal.taskOperation,
+		tasksUpdating: state.common.tasksUpdating,
 		currentPage,
 		sortField,
 		sortDirection,
-		isLoggedIn: state.auth.isLoggedIn
+		isLoggedIn: state.login.isLoggedIn
 	}
 }
 
 export default connect(
-	masStateToProps,
+	mapStateToProps,
 	{ tasksFetch, setCurrentTask, taskUpdate, setCurrentOperation }
 )(TaskList)

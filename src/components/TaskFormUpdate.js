@@ -123,11 +123,13 @@ const formWrapped = reduxForm({
 })(TaskFormUpdate)
 
 const mapStateToProps = (state) => {
-	const taskValues = state.tasks.items[state.taskCurrentId] || {}
+	const { taskCurrentId } = state.modal
+	const taskRequest = state.common.tasksUpdating[taskCurrentId] || {}
+	const taskValues = state.tasks.items[taskCurrentId] || {}
 	const initialValues = mapValues(taskValues, unescape)
 	return {
 		initialValues,
-		taskRequest: state.tasksUpdating[state.taskCurrentId] || {}
+		taskRequest
 	}
 }
 

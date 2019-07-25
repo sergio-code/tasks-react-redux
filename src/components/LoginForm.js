@@ -83,7 +83,7 @@ const formWrapped = reduxForm({
 })(LoginForm)
 
 const mapStateToProps = (state) => {
-	return { loginSubmitting: state.auth.submitting }
+	return { loginSubmitting: state.login.submitting }
 }
 
 export default connect(

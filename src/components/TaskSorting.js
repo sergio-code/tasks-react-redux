@@ -58,7 +58,7 @@ const TaskSorting = ({ setNavigation, sortField, sortDirection }) => {
 }
 
 const masStateToProps = (state) => {
-	const { sortField, sortDirection } = state.tasksNavigation
+	const { sortField, sortDirection } = state.navigation
 	return { sortField, sortDirection }
 }
 

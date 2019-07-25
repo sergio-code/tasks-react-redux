@@ -1,20 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setCurrentOperation } from '../actions'
+import { CREATE_OPERATION } from '../configuration'
 
 const TaskAddButton = ({ setCurrentOperation }) => {
 	return (
 		<div>
-			<button onClick={() => setCurrentOperation('create')}>+ Add</button>
+			<button onClick={() => setCurrentOperation(CREATE_OPERATION)}>
+				+ Add
+			</button>
 		</div>
 	)
 }
 
-const mapStateToProps = (state) => {
-	return { ...state.tasksForm }
-}
-
 export default connect(
-	mapStateToProps,
+	null,
 	{ setCurrentOperation }
 )(TaskAddButton)

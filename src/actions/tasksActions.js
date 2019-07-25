@@ -13,6 +13,10 @@ import {
 	EDIT_TASK_SUCCESS,
 	EDIT_TASK_FAILURE
 } from './types'
+import {
+	TASK_STATUS_COMPLETED,
+	TASK_STATUS_NOT_COMPLETED
+} from '../configuration'
 
 import history from '../history'
 import * as client from '../apis'
@@ -74,7 +78,7 @@ export const tasksFetch = () => async (dispatch, getState) => {
 		currentPage: page,
 		sortField,
 		sortDirection
-	} = getState().tasksNavigation
+	} = getState().navigation
 
 	try {
 		// WORKAROUND TO KNOW HOW MANY ITEMS PER PAGE (NOT PROVIDED IN RESPONSE)
@@ -149,16 +153,22 @@ export const taskUpdate = (values, invokedByReduxForm = true) => async (
 	getState
 ) => {
 	// Prepare request payload
-	const token = getState().auth.token
+	const token = getState().login.token
 	const payload = { token }
 	if (values.text) {
 		payload.text = values.text
 	}
 	if (values.status !== undefined) {
-		if ([10, 0].includes(values.status)) {
+		if (
+			[TASK_STATUS_COMPLETED, TASK_STATUS_NOT_COMPLETED].includes(
+				values.status
+			)
+		) {
 			payload.status = values.status
 		} else {
-			payload.status = values.status ? 10 : 0
+			payload.status = values.status
+				? TASK_STATUS_COMPLETED
+				: TASK_STATUS_NOT_COMPLETED
 		}
 	}
 	dispatch({ type: EDIT_TASK, payload: { id: values.id } })

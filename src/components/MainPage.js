@@ -8,6 +8,7 @@ import TaskFormUpdate from './TaskFormUpdate'
 import Pagination from './Pagination'
 import Modal from './Modal'
 import { setNavigation, setCurrentOperation } from '../actions'
+import { CREATE_OPERATION, EDIT_OPERATION } from '../configuration'
 
 const TasksPage = ({
 	total,
@@ -25,8 +26,8 @@ const TasksPage = ({
 					show={taskOperation !== null}
 					close={() => setCurrentOperation(null)}
 				>
-					{taskOperation === 'create' && <TaskFormCreate />}
-					{taskOperation === 'edit' && <TaskFormUpdate />}
+					{taskOperation === CREATE_OPERATION && <TaskFormCreate />}
+					{taskOperation === EDIT_OPERATION && <TaskFormUpdate />}
 				</Modal>
 				<div className="flex space-between">
 					<TaskSorting />
@@ -49,8 +50,8 @@ const TasksPage = ({
 
 const mapStateToProps = (state) => {
 	const {
-		tasksNavigation: { currentPage, itemsPerPage, total },
-		taskOperation
+		navigation: { currentPage, itemsPerPage, total },
+		modal: { taskOperation }
 	} = state
 	return {
 		currentPage,
