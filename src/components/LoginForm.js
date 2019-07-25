@@ -48,6 +48,11 @@ const LoginForm = ({ error, handleSubmit, loginSubmitting, signIn, valid }) => {
 				style={{ position: 'relative' }}
 			>
 				<h2 className="form-title">Sign In</h2>
+				<p>
+					<strong>(Demo username: admin; password: 123)</strong>
+					<br />
+					<br />
+				</p>
 				<Field
 					name="username"
 					type="text"
