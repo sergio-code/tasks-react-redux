@@ -19,6 +19,11 @@ Functionality:
 - The administrator has the ability to edit the text of the task and mark task as completed.
 - Completed tasks in the general list are displayed with the corresponding mark.
 
+## State tree
+<p align="center">
+  <img src="https://i.ibb.co/QKG418r/Screenshot-from-2019-07-25-22-24-28.png" alt="PWA Calculator">
+</p>
+
 ## Backend description
 
 MIME-type for POST requests - multipart/form-data
