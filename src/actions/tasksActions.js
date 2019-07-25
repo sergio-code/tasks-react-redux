@@ -191,6 +191,8 @@ export const taskUpdate = (values, invokedByReduxForm = true) => async (
 					...omit(payload, ['token'])
 				}
 			})
+			// Fetch tasks updates
+			dispatch(tasksFetch())
 		} else if (
 			data.status === 'error' &&
 			data.message &&
