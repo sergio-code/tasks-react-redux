@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { mapValues, unescape } from 'lodash'
 import { taskUpdate, setCurrentOperation } from '../actions'
 import CoverAnimation from './CoverAnimation'
+import { TASK_STATUS_COMPLETED } from '../configuration'
 
 const FORM_NAME = 'taskUpdate'
 
@@ -55,10 +56,10 @@ const TaskFormUpdate = ({
 	error,
 	handleSubmit,
 	valid,
-	taskRequest
+	taskRequestStatus
 }) => {
 	return (
-		<CoverAnimation animate={taskRequest.submitting}>
+		<CoverAnimation animate={taskRequestStatus.submitting}>
 			<form className="form" onSubmit={handleSubmit(taskUpdate)}>
 				<h2 className="form-title">Edit task</h2>
 				<Field name="id" type="hidden" component="input" />
@@ -102,7 +103,7 @@ const TaskFormUpdate = ({
 					</button>
 					<button
 						type="submit"
-						disabled={!valid || taskRequest.submitting}
+						disabled={!valid || taskRequestStatus.submitting}
 					>
 						OK
 					</button>
@@ -124,12 +125,15 @@ const formWrapped = reduxForm({
 
 const mapStateToProps = (state) => {
 	const { taskCurrentId } = state.modal
-	const taskRequest = state.common.tasksUpdating[taskCurrentId] || {}
-	const taskValues = state.tasks.items[taskCurrentId] || {}
-	const initialValues = mapValues(taskValues, unescape)
+	const taskRequestStatus = state.common.tasksUpdating[taskCurrentId] || {}
+	const task = state.tasks.items[taskCurrentId] || {}
+	const initialValues = {
+		...mapValues(task, unescape),
+		status: task.status === TASK_STATUS_COMPLETED ? true : false
+	}
 	return {
 		initialValues,
-		taskRequest
+		taskRequestStatus
 	}
 }
 
