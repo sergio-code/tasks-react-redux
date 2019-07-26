@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { signOut } from '../actions'
 
-const renderButton = ({ isLoggedIn, signOut, location }) => {
+const renderButton = ({ isLoggedIn, onSignOut, location }) => {
 	if (isLoggedIn) {
 		return (
-			<button onClick={signOut} className="navbar-login-button">
+			<button onClick={onSignOut} className="navbar-login-button">
 				SignOut
 			</button>
 		)
@@ -20,7 +20,15 @@ const renderButton = ({ isLoggedIn, signOut, location }) => {
 	}
 }
 
-const Header = ({ signOut, username, isLoggedIn, location }) => {
+const Header = withRouter(({ location }) => {
+	const dispatch = useDispatch()
+	const onSignOut = () => dispatch(signOut())
+
+	const { username, isLoggedIn } = useSelector((state) => {
+		const { username, isLoggedIn } = state.login
+		return { username, isLoggedIn }
+	})
+
 	return (
 		<header className="header">
 			<nav className="navbar" aria-label="Site navigation bar">
@@ -33,21 +41,15 @@ const Header = ({ signOut, username, isLoggedIn, location }) => {
 							Hello, {username}
 						</span>
 					) : null}
-					{renderButton({ isLoggedIn, signOut, location })}
+					{renderButton({
+						isLoggedIn,
+						onSignOut,
+						location
+					})}
 				</div>
 			</nav>
 		</header>
 	)
-}
+})
 
-const mapStateToProps = (state) => {
-	const { username, isLoggedIn } = state.login
-	return { username, isLoggedIn }
-}
-
-export default withRouter(
-	connect(
-		mapStateToProps,
-		{ signOut }
-	)(Header)
-)
+export default Header
