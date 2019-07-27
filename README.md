@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/HP8DnpL/tasksreactapp-surge-sh.png" alt="PWA Calculator">
+  <img src="docs/img/screenshots/tablet_v1.png" alt="PWA Calculator">
 </p>
 
 ## Demo
@@ -10,7 +10,7 @@ https://tasksreactapp.surge.sh/
 
 ## Tasks App (Test task)
 
-### Functionality:
+Functionality:
 - Tasks consist of: Username/Email/Text
 - The start page is a list of tasks with the ability to sort by Username/Email/Status.
 - The output of tasks must be done with pagination by 3 items per page.
@@ -18,13 +18,36 @@ https://tasksreactapp.surge.sh/
 - The administrator has the ability to edit the text of the task and mark task as completed.
 - Completed tasks in the general list are displayed with the corresponding mark.
 
-### [Backend description](./docs/backend.md)
+[Backend description](./docs/backend.md)
 
 ## Approach
+
 ### State tree
 <p align="center">
-  <img src="https://i.ibb.co/QKG418r/Screenshot-from-2019-07-25-22-24-28.png" alt="PWA Calculator">
+  <img src="docs/img/state_tree.png" alt="Redux state tree">
 </p>
+
+### Mockups
+
+Main page (everyone can add task, but not edit)
+
+<img src="docs/img/mockups/main_page.png" height="400">
+
+
+Login page
+
+<img src="docs/img/mockups/login_page.png" height="400">
+
+
+Admin page
+
+<img src="docs/img/mockups/admin_page.png" height="400">
+
+
+Editing task (Admin)
+
+<img src="docs/img/mockups/admin_editing_item.png" height="400">
+
 
 ## How to build/run from sources
 
@@ -39,8 +62,10 @@ https://tasksreactapp.surge.sh/
 
 ## Tech/framework used
 - React
+- React Hooks
 - Redux
 - Redux-Thunk
+- Redux-Form
 
 ## Credits
 - [Pagination in ReactJS by Agoi Abel](https://medium.com/@agoiabeladeyemi/pagination-in-reactjs-36f4a6a6eb43)
